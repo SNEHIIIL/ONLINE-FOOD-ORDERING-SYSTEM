@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fbfaf8" />
+  <title>Savor — Food, made fresh</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="brand" aria-label="Savor home">
+        <span class="brand-mark" aria-hidden="true">s</span>
+        <span>Savor</span>
+      </a>
+      <div class="nav-links">
+        <a href="#browse">Explore</a>
+        <a href="#bag">Your Bag</a>
+        <a href="#order-status">Order Status</a>
+      </div>
+      <div class="nav-status" id="serverStatus">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <span>Kitchen Open · Delivering Now</span>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero fade-in">
+    <div class="hero-copy">
+      <p class="eyebrow"><span aria-hidden="true">✦</span> A little joy, delivered</p>
+      <h1>Freshly made.<br /><span>Right to your door.</span></h1>
+      <p class="hero-sub">Good food, thoughtfully prepared and on its way to you.</p>
+      <form class="hero-search" id="searchForm" role="search">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search dishes, restaurants, or item code..."
+          autocomplete="off"
+          aria-label="Search dishes, restaurants, or item code"
+        />
+        <button id="lookupBtn" class="btn btn-primary" type="submit">Search</button>
+      </form>
+      <div id="lookupBanner" class="lookup-banner hidden" role="status" aria-live="polite"></div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="hero-orbit orbit-one"></div>
+      <div class="hero-orbit orbit-two"></div>
+      <div class="hero-plate"><span>🥗</span></div>
+      <span class="art-spark spark-one">✦</span>
+      <span class="art-spark spark-two">✳</span>
+      <span class="art-note">made with care</span>
+    </div>
+  </header>
+
+  <main id="workspace" class="workspace">
+    <section id="browse" class="card browse-card fade-in" style="--delay: 80ms;" aria-labelledby="browseTitle">
+      <div class="card-head">
+        <div>
+          <span class="step-label">MADE FRESH FOR YOU</span>
+          <h2 id="browseTitle">Explore the menu</h2>
+        </div>
+        <span class="section-icon" aria-hidden="true">🍽️</span>
+      </div>
+      <div id="restaurantFilters" class="segment-bar" aria-label="Filter by restaurant"></div>
+      <div id="menuList" class="menu-list" aria-live="polite"></div>
+    </section>
+
+    <section id="bag" class="card bag-card fade-in" style="--delay: 150ms;" aria-labelledby="bagTitle">
+      <div class="card-head">
+        <div>
+          <span class="step-label">SOMETHING DELICIOUS</span>
+          <h2 id="bagTitle">Your Bag</h2>
+        </div>
+        <span id="cartCountPill" class="meta-pill">0 items</span>
+      </div>
+      <div id="cartList" class="cart-list" aria-live="polite"></div>
+      <div class="bag-footer">
+        <div class="total-line">
+          <span>Subtotal</span>
+          <strong id="cartTotal">₹0.00</strong>
+        </div>
+        <div class="action-pair">
+          <button id="clearBtn" class="btn btn-ghost" type="button" disabled>Clear Bag</button>
+          <button id="undoBtn" class="btn btn-subtle" type="button" disabled>Undo last change</button>
+        </div>
+        <button id="checkoutBtn" class="btn btn-primary btn-block" type="button" disabled>
+          Place Order <span aria-hidden="true">→</span>
+        </button>
+        <p class="bag-note">Freshly prepared, just for you.</p>
+      </div>
+    </section>
+
+    <section id="order-status" class="card order-card fade-in" style="--delay: 220ms;" aria-labelledby="orderTitle">
+      <div class="card-head">
+        <div>
+          <span class="step-label">FROM OUR KITCHEN TO YOU</span>
+          <h2 id="orderTitle">Order Status</h2>
+        </div>
+        <span id="queueCountPill" class="meta-pill">0 active</span>
+      </div>
+      <form id="orderLookupForm" class="track-row">
+        <input type="number" id="orderLookupInput" min="1" inputmode="numeric" placeholder="Order number" aria-label="Order number" />
+        <button id="orderLookupBtn" class="btn btn-secondary" type="submit">Track</button>
+      </form>
+      <div id="activeOrderCard" class="status-stage" aria-live="polite">
+        <div class="empty-order">
+          <span class="empty-illustration" aria-hidden="true">🛵</span>
+          <p>Your next favorite meal is just an order away.</p>
+        </div>
+      </div>
+      <div class="queue-strip">
+        <span class="strip-label">Your active orders</span>
+        <div id="queueChips" class="chip-row"></div>
+      </div>
+      <button id="advanceBtn" class="btn btn-subtle simulate-btn" type="button" disabled>
+        Simulate Next Delivery Step
+      </button>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
